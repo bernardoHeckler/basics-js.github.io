@@ -7,6 +7,6 @@ Seja Bem Vindo! Aqui, Eu estarei postando pequenos projetos utilizando: Javascri
 <h2>Projetos</h2>
 <a href='https://bernardoheckler.github.io/basics-js.github.io/Projeto%231_CalculadoraSimples/index.html'>PROJETO #1 CALCULADORA SIMPLES INTERATIVA</a>
 <br>
-<a href='https://bernardoheckler.github.io/basics-js.github.io/Projeto%232_ListaDeTarefas/index.html'>PROJETO #2 LISTA DE TAREEFAS SIMPLES INTERATIVA</a>
+<a href='https://bernardoheckler.github.io/basics-js.github.io/Projeto%232_ListaDeTarefas/index.html'>PROJETO #2 LISTA DE TAREFAS SIMPLES INTERATIVA</a>
 
 Fique ligado, por ai vem mais! :)
