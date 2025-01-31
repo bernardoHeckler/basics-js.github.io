@@ -1,80 +1,60 @@
-// const submitButton = document.getElementById('submitButton');
-// const lista = document.getElementById('lista');
-
-// document.getElementById('myform').addEventListener(
-// 'submit', function (event) {
-//     event.preventDefault();
-//     const tarefa = document.getElementById('tarefa').value;
-//     const print = `
-//     <li>Tarefa a Fazer: <strong>${tarefa}</strong></li>
-//     `;
-//     lista.innerHTML = print;
-
-// }
-// )
-
-
-// se eu tenho uma tarefa preenchida ela esta no id=tarefa
-// entao quando o usuario clica no botao adicionar
-// ele manda so uma tarefa
-// entao a id=tarefa deve virar uma "lista" que vou chamar de tarefas = [[..][..][..][..]]
-// envio a tarefa para dentro da lista tarefas
-// inserir no campo de html
-// ele sera armazenado em um banco de dados
-
 const lista = document.getElementById('lista');
-const tarefas = []; // Uma lista de Arrays para armazenar as tarefas (plural)
+let tarefas = JSON.parse(localStorage.getItem('tarefas')) || []; // Carrega as tarefas do LocalStorage
+// JSON.parse() recuperar dados do LocalStorage pegando o item dentro da tarefas []
+// || [] garante que, se não houver nada salvo, um array vazio seja retornado.
 
+// Função para carregar as tarefas na lista
+function carregarTarefas() {
+    lista.innerHTML = ''; // Limpando a lista
+    tarefas.forEach((tarefa, index) => { // para cada tarefa e index que estiver dentro das tarefas
+        const novoItem = document.createElement('li'); // criar uma nova lista
+        novoItem.classList.add('corLi'); // classe .corLi
+        novoItem.innerHTML = `
+            <div class="contentLista">
+                <p>
+                    Tarefa a Fazer: 
+                    <strong style="white-space: pre-wrap;">${tarefa}</strong>
+                </p>
+                <div class="containerBtnsTarefa">
+                    <button type="button" class="apagarTarefa" data-index="${index}">Apagar</button>
+                    <button type="button" class="editarTarefa" data-index="${index}">Editar</button>
+                </div>
+            </div>
+        `;
+        lista.appendChild(novoItem); // Adiciona o novoItem na ul#lista
+    });
+}
+// fecho a função carregarTarefas()
+
+// crio um evento que a ID=myform e espera ação de submit, então aqui estamos enviando todos os dados pra serem armazenados
 document.getElementById('myform').addEventListener('submit', function (event) {
     event.preventDefault(); // Impede o envio do formulário
 
-    const tarefa = document.getElementById('tarefa').value; // Obtém o valor do campo de entrada
+    const tarefa = document.getElementById('tarefa').value.trim();
 
-    // Verifica se o campo não está vazio e se o número de tarefas é menor que 8
+    // Verifica se o campo não está vazio (&&) e se o número de tarefas é menor que 8
     if (tarefa !== "" && tarefas.length < 8) {
-        // Adiciona a tarefa ao array tarefas
-        tarefas.push(tarefa);
-
-        // Limpa a lista e recria os itens com base no array
-        lista.innerHTML = ''; // Limpa a lista
-
-        // Para cada tarefa, cria um novo item na lista
-        tarefas.forEach(function (tarefa, index) {
-            const novoItem = document.createElement('li');
-            novoItem.classList.add('corLi');
-            novoItem.innerHTML = `
-                <div class="contentLista">
-                    <p>
-                        Tarefa a Fazer: 
-                        <strong style="white-space: pre-wrap;">${tarefa}</strong>
-                    </p>
-                    <div class="containerBtnsTarefa">
-                        <button type="button" class="apagarTarefa" data-index="${index}">Apagar</button>
-                        <button type="button" class="editarTarefa" data-index="${index}">Editar</button>
-                    </div>
-                </div>
-            `;
-            lista.appendChild(novoItem); // Adiciona o novo item à lista
-        });
-
-        // Limpa o campo de entrada após adicionar a tarefa
-        document.getElementById('tarefa').value = '';
+        tarefas.push(tarefa); // push = empurra a tarefa para dentro do array tarefas []
+        localStorage.setItem('tarefas', JSON.stringify(tarefas)); // setItem para pegar variavel, armazenar, e JSON se torna uma string
+        carregarTarefas(); // Recarrega a lista de tarefas
+        document.getElementById('tarefa').value = ''; // Limpa o campo de entrada
     } else if (tarefas.length >= 8) {
         alert("Você atingiu o limite máximo de 8 tarefas!");
     }
 });
 
+// Função para remover uma tarefa
 lista.addEventListener('click', function (event) {
-    // Verifica se o clique foi no botão "Apagar"
     if (event.target.classList.contains('apagarTarefa')) {
         const index = event.target.getAttribute('data-index'); // Obtém o índice da tarefa
-        tarefas.splice(index, 1); // Remove a tarefa do array
-        event.target.closest('li').remove(); // Remove o <li> inteiro ao clicar em "Apagar"
+        tarefas.splice(index, 1); // Remove apenas 1 tarefa do array tarefas []
+        localStorage.setItem('tarefas', JSON.stringify(tarefas)); // setItem para pegar variavel, armazenar, e JSON se torna uma string
+        carregarTarefas(); // Recarrega a lista de tarefas
     }
 });
 
+// Função para editar uma tarefa
 lista.addEventListener('click', function (event) {
-    // Verifica se o clique foi no botão "Editar"
     if (event.target.classList.contains('editarTarefa')) {
         const index = event.target.getAttribute('data-index');
         const li = event.target.closest('li'); // Encontra o <li> mais próximo
@@ -90,35 +70,25 @@ lista.addEventListener('click', function (event) {
 
         // Cria um botão para salvar a edição
         const salvarBtn = document.createElement('button');
-        salvarBtn.className = 'corBtn';
+        salvarBtn.className = 'corBtn';  // classe button.corBtn
         salvarBtn.textContent = 'Salvar';
         salvarBtn.type = 'button';
 
         // Adiciona o botão de salvar ao lado do input
-        li.querySelector('.containerBtnsTarefa').prepend(salvarBtn); // Adiciona o botão "Salvar" dentro da div.containerBtnsTarefa
+        li.querySelector('.containerBtnsTarefa').prepend(salvarBtn); // Insere o elemento salvarBtn como o primeiro filho de .containerBtnsTarefa.
 
-        // Foca no input automaticamente
+        // Foca no input automaticamente para o usuário preencher o campo
         input.focus();
 
         // Adiciona um evento para salvar a edição
         salvarBtn.addEventListener('click', function () {
-            const novaTarefa = input.value.trim(); // Obtém o valor do input; trim() remove espaços em branco
+            const novaTarefa = input.value.trim(); // Obtém o valor do input
 
             // Verifica se a nova tarefa não está vazia
             if (novaTarefa !== '') {
                 tarefas[index] = novaTarefa; // Atualiza a tarefa no array
-                li.innerHTML = `
-                    <div class="contentLista">
-                        <p>
-                            Tarefa a Fazer: 
-                            <strong style="white-space: pre-wrap;">${novaTarefa}</strong>
-                        </p>
-                        <div class="containerBtnsTarefa">
-                            <button type="button" class="apagarTarefa" data-index="${index}">Apagar</button>
-                            <button type="button" class="editarTarefa" data-index="${index}">Editar</button>
-                        </div>
-                    </div>
-                `; // Atualiza o conteúdo da <li>
+                localStorage.setItem('tarefas', JSON.stringify(tarefas)); // setItem para pegar variavel, armazenar, e JSON se torna uma string
+                carregarTarefas(); // Recarrega a lista de tarefas
             }
         });
 
@@ -130,3 +100,6 @@ lista.addEventListener('click', function (event) {
         });
     }
 });
+
+// Carrega as tarefas ao iniciar a página
+carregarTarefas();
