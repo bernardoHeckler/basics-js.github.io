@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 
+import "./MoviesGrid.css"
+
 const apiKey = process.env.REACT_APP_API_KEY;
 const apiUrl = process.env.REACT_APP_API;
 

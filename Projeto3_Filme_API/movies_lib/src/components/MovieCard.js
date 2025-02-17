@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const imageUrl = process.env.REACT_APP_IMG;
 
-const MovieCard = ({movie, showLink = true}) => {
+const MovieCard = ({ movie, showLink = true }) => {
     return (
         <div className='movie-card'>
-        <img src={imageUrl + movie.poster_path} alt={movie.title}></img>
+            <img src={imageUrl + movie.poster_path} alt={movie.title}></img>
             <h2>{movie.title}</h2>
             <p>
                 {movie.vote_average}
