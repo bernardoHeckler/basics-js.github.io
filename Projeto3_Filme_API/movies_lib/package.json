@@ -2,7 +2,7 @@
   "name": "movies_lib",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://bernardoheckler.github.io/basics-js.github.io",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.2.0",
+    "react-router-dom": "^7.1.5",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -39,12 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bernardoHeckler/basics-js.github.io.git"
   }
 }
