@@ -42,5 +42,9 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bernardoHeckler/basics-js.github.io.git"
   }
 }
