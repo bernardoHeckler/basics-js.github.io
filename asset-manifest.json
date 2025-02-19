@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/basics-js.github.io/Projeto3_Filme_API/movies_lib/static/css/main.4934bb76.css",
-    "main.js": "/basics-js.github.io/Projeto3_Filme_API/movies_lib/static/js/main.4898a1bc.js",
-    "static/js/453.10277e93.chunk.js": "/basics-js.github.io/Projeto3_Filme_API/movies_lib/static/js/453.10277e93.chunk.js",
-    "index.html": "/basics-js.github.io/Projeto3_Filme_API/movies_lib/index.html",
-    "main.4934bb76.css.map": "/basics-js.github.io/Projeto3_Filme_API/movies_lib/static/css/main.4934bb76.css.map",
-    "main.4898a1bc.js.map": "/basics-js.github.io/Projeto3_Filme_API/movies_lib/static/js/main.4898a1bc.js.map",
-    "453.10277e93.chunk.js.map": "/basics-js.github.io/Projeto3_Filme_API/movies_lib/static/js/453.10277e93.chunk.js.map"
+    "main.css": "/basics-js.github.io/static/css/main.4934bb76.css",
+    "main.js": "/basics-js.github.io/static/js/main.38d2f252.js",
+    "static/js/453.10277e93.chunk.js": "/basics-js.github.io/static/js/453.10277e93.chunk.js",
+    "index.html": "/basics-js.github.io/index.html",
+    "main.4934bb76.css.map": "/basics-js.github.io/static/css/main.4934bb76.css.map",
+    "main.38d2f252.js.map": "/basics-js.github.io/static/js/main.38d2f252.js.map",
+    "453.10277e93.chunk.js.map": "/basics-js.github.io/static/js/453.10277e93.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4934bb76.css",
-    "static/js/main.4898a1bc.js"
+    "static/js/main.38d2f252.js"
   ]
 }
