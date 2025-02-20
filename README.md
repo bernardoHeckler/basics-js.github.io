@@ -9,4 +9,7 @@ Seja Bem Vindo! Aqui, Eu estarei postando pequenos projetos utilizando: Javascri
 <br>
 <a href='https://bernardoheckler.github.io/basics-js.github.io/Projeto%232_ListaDeTarefas/index.html'>PROJETO #2 LISTA DE TAREFAS SIMPLES INTERATIVA</a>
 
+<a href='https://bernardoheckler.github.io/react-filme/'>PROJETO #3 API COM LISTA DE FILMES</a>
+
+
 Fique ligado, por ai vem mais! :)
